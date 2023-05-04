@@ -12,7 +12,7 @@ Product.belongsTo(Category, {
     unique: false
   },
   // Define name
-  as: "available_products"
+  as: "products"
 });
 
 // Categories have many Products
