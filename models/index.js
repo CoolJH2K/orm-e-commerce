@@ -13,7 +13,7 @@ Product.belongsTo(Category, {
   },
   // Define name
   as: "available_products"
-})
+});
 
 // Categories have many Products
 Category.belongsToMany(Product, {
@@ -22,7 +22,7 @@ Category.belongsToMany(Product, {
     unique: false
   },
   as: "product_categories"
-})
+});
 
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag, {
@@ -30,8 +30,8 @@ Product.belongsToMany(Tag, {
     model: ProductTag,
     unique: false
   },
-  as: ""
-})
+  as: "product_tags"
+});
 
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
@@ -40,7 +40,7 @@ Tag.belongsToMany(Product, {
     unique: false
   },
   as: ""
-})
+});
 
 module.exports = {
   Product,
