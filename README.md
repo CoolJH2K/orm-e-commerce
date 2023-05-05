@@ -13,8 +13,9 @@ I learned a **lot** about how to make GET, POST, PUT, and DELETE requests by usi
 2. Download Node.js.
 3. Open your operating system's terminal and type "npm install express" to download Express, which the application will need to run properly. Repeat for Sequelize.
 4. After opening Insomnia, create three folders titled "Categories," "Products," and "Tags."
-5. In the "Categories" folder, make two GET requests, one POST request, one PUT request, and one 
+5. In the "Categories" folder, make two GET requests, one POST request, one PUT request, and one DELETE request to see how the app will function. Repeat for the "Products" and "Tags" folders.
 ## Usage
+Any new e-commerce business just starting out is free to use this app!
 ## Credits
 Link to Original Code: https://github.com/coding-boot-camp/fantastic-umbrella
 
