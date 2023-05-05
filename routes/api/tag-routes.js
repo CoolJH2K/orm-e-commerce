@@ -2,14 +2,37 @@ const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
 // GET all tags
-router.get('/', (req, res) => {
-  // find all tags
-  // be sure to include its associated Product data
+router.get('/', async (req, res) => {
+  try {
+    const tagData = await Tag.findAll(
+      {
+        include: [
+          {model: Product, through: ProductTag, as: "producttag"}
+        ]
+      }
+    );
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // GET a single tag
-router.get('/:id', (req, res) => {
-  // be sure to include its associated Product data
+router.get('/:id', async (req, res) => {
+  try {
+    const tagData = await Tag.findByPk(req.params.id, {
+      include: [
+        {model: Product, through: ProductTag, as: "producttag"}
+      ]
+    });
+    if(!tagData) {
+      res.status(404).json({message: "No tag found with this ID."});
+      return;
+    }
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // CREATE a new tag
@@ -23,8 +46,21 @@ router.post('/', async (req, res) => {
 });
 
 // UPDATE a tag's name
-router.put('/:id', (req, res) => {
-  
+router.put('/:id', async (req, res) => {
+  try {
+    const tagData = await Tag.update(req.body, {
+      where: {
+        id: req.params.id,
+      }
+    });
+    if (!tagData) {
+      res.status(404).json({message: "No tag found with this ID."});
+      return;
+    }
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(tagData);
+  }
 });
 
 // DELETE a tag
@@ -35,7 +71,7 @@ router.delete('/:id', async (req, res) => {
         id: req.params.id
       }
     });
-    if (!tagData) {
+    if (!tagData[0]) {
       res.status(404).json({message: "No tag found with this ID."});
       return;
     }
