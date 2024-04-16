@@ -1,4 +1,6 @@
 # ORM E-Commerce
+## Disclaimer
+AS OF APRIL 16, 2024, THIS REPO IS NOW ARCHIVED
 ## Description
 Let's say you want to start your own online business that competes with Amazon and eBay. But you're not sure where to start. Don't panic, this app has you covered!
 ### Why did I make this?
